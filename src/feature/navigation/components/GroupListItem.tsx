@@ -5,18 +5,22 @@ import { Group } from 'src/core/types'
 
 type Props = {
   group: Group
-  onClick: (groupTitle: string) => void
+  deleteMode: boolean
+  setActive: (groupTitle: string) => void
+  deleteGroup: (groupTitle: string) => void
 }
 
-export default function GroupListItem({ group, onClick }: Props) {
+export default function GroupListItem({ group, deleteMode, setActive, deleteGroup }: Props) {
   return (
-    <Wrapper active={group.active} onClick={() => onClick(group.title)}>
+    <Wrapper active={group.active} onClick={() => setActive(group.title)}>
+      {deleteMode && <DeleteLabel onClick={() => deleteGroup(group.title)}><Text cantSelect={true}>x</Text></DeleteLabel>}
       <Text cantSelect={true}>{group.title}</Text>
     </Wrapper>
   )
 }
 
 const Wrapper = styled.div<{ active: boolean }>`
+position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -38,4 +42,22 @@ const Wrapper = styled.div<{ active: boolean }>`
   :hover {
     cursor: pointer;
   }
+`
+
+const DeleteLabel = styled.div`
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${colors.black};
+  position: absolute;
+  top: -6px;
+  right: -6px;
+
+:hover {
+  background-color: red;
+}
 `

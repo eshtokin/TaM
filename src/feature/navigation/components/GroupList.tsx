@@ -2,7 +2,7 @@ import { useState } from 'react'
 import styled from 'styled-components'
 import GroupListItem from './GroupListItem'
 import { colors } from 'src/core/constants'
-import { createGroupAction } from 'src/core/store/actions'
+import { createGroupAction, deleteGroupAction } from 'src/core/store/actions'
 import { useAppSelector, useDispatch } from 'src/core/hooks'
 import { Button, Input, Text } from 'src/core/components'
 
@@ -11,26 +11,34 @@ export default function GroupList() {
   const groups = useAppSelector((state) => state.group.groups)
 
   const [editingMode, setEditingMode] = useState(false)
+  const [deleteMode, setDeleteMode] = useState(false)
   const [newGroupName, setNewGroupName] = useState('')
 
-  const onClick = (title: string) => {}
+  const setActive = (title: string) => {}
+
+  const deleteGroup = (title: string) => {
+    dispatch(deleteGroupAction({ title }))
+  }
 
   const addNewGroup = () => {
-  if (!newGroupName.trim().length) return
+    if (!newGroupName.trim().length) return
     dispatch(createGroupAction({ title: newGroupName }))
     toggleEditingMode()
     setNewGroupName('')
   }
 
-  const toggleEditingMode = () => {
-    setEditingMode(!editingMode)
-  }
+  const toggleDeleteMode = () => setDeleteMode(!deleteMode)
+
+  const toggleEditingMode = () => setEditingMode(!editingMode)
 
   const _renderGroups = () => {
     return (
       <>
         {groups.map((group, index) => (
-          <GroupListItem key={`group-${index}`} {...{ group, onClick }} />
+          <GroupListItem
+            key={`group-${index}`}
+            {...{ group, deleteMode, setActive, deleteGroup }}
+          />
         ))}
       </>
     )
@@ -53,14 +61,18 @@ export default function GroupList() {
 
   return (
     <GroupListContainer>
-      <SideContainer />
+      <SideContainer>
+        <Button onClick={toggleDeleteMode}>
+          <Text cantSelect={true}>{deleteMode ? 'x' : '-'}</Text>
+        </Button>
+      </SideContainer>
       <CenterContainer>
         {_renderGroups()}
         {editingMode && _renderAddRow()}
       </CenterContainer>
       <SideContainer>
         <Button onClick={toggleEditingMode}>
-          <Text cantSelect={false}>{editingMode ? 'x' : '+'}</Text>
+          <Text cantSelect={true}>{editingMode ? 'x' : '+'}</Text>
         </Button>
       </SideContainer>
     </GroupListContainer>
