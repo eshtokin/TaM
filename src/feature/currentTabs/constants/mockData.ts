@@ -1,0 +1,16 @@
+export const CURRENT_TAB_LIST = [
+  'https://comodosslstore.com/blog/ssl-certificates-add-bulletproof-mobile-app-security.html',
+  'https://medium.com/neptune-mutual/announcing-neptune-mutual-rising-stars-cee98a098696#id_token=eyJhbGciOiJSUzI1NiIsImtpZCI6ImQzMzJhYjU0NWNjMTg5ZGYxMzNlZmRkYjNhNmM0MDJlYmY0ODlhYzIiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJuYmYiOjE2NTA0ODkxNjIsImF1ZCI6IjIxNjI5NjAzNTgzNC1rMWs2cWUwNjBzMnRwMmEyamFtNGxqZGNtczAwc3R0Zy5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsInN1YiI6IjEwMTc5NTQ5NzQzMDI4NTMzNzgxMyIsImVtYWlsIjoiZXNodG9raUBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiYXpwIjoiMjE2Mjk2MDM1ODM0LWsxazZxZTA2MHMydHAyYTJqYW00bGpkY21zMDBzdHRnLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwibmFtZSI6IkFsZXggRXNodG9raW4iLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EtL0FPaDE0R2lfekJ4VVVpVGVBczZueDlQdFhwVUpnSzBDSUNJbkdkeEM1WTVxYXc9czk2LWMiLCJnaXZlbl9uYW1lIjoiQWxleCIsImZhbWlseV9uYW1lIjoiRXNodG9raW4iLCJpYXQiOjE2NTA0ODk0NjIsImV4cCI6MTY1MDQ5MzA2MiwianRpIjoiMTNiOTc2ZjE0MmVmOTJjZTRmZmNkNDc3OTBjZDRkYTkwMzIwODRkOCJ9.XA4ASGSzWboMVaMdF7snS-GCRiKNpngcsv2Qv8uV5M3sEi3au49Iv8PX5xvZ0it4V5Clm-6t4RXdoZSVwcSVcfCXA5wNNKUdjuh5FSPnLDcys8aEbWkc108nD3PaqKIvQ6Dooz4hUNdoFBH-Fd7-FhAFZYv_1VlvcUC1yG19lDtevS1_XTUT-jbzhl6wVX3ttjFagweuncIuqlrZ-QwBy2dm8EOhlLo7AsASp9lhS8sIw469KzLOn5Qcj6Ven6trsZZ95SUNZz-4qf02Moe-jx5uU0gNUF93cNkTusmz2VjwgZJ7xqnAzLU-pYLo0xsADE2cIwBSUX-etNYrkMEQ5A',
+  'https://medium.com/@BlockHorizon/voltz-testnet-detailed-version-tutorial-kovan-network-da824397c762',
+  'https://medium.com/aurigami/2-500-000-near-rewards-superboost-f170aab439bd',
+  'https://makroo2o.atlassian.net/wiki/spaces/MAN/pages/462782586/OneTrust+Knowledge+Center',
+  'https://makroo2o.atlassian.net/browse/MAN-6410',
+  'https://ek.ua/ua/ek-item.php?resolved_name_=GARMIN-INSTINCT-SOLAR&view_=tbl',
+  'https://multisport.com.ua/pohodnaya-kuhnya/termokruzhki/sea-to-summit-delta-insulmug',
+  'https://multisport.com.ua/pohodnaya-kuhnya/termokruzhki/tramp-trc-009%20',
+  'https://multisport.com.ua/pohodnaya-kuhnya/termokruzhki/tramp-trc-100-05-l',
+  'https://multisport.com.ua/pohodnaya-kuhnya/termokruzhki/tramp-trc-137',
+  'https://medium.com/litslink/how-to-create-google-chrome-extension-using-react-js-5c9e343323ff',
+  'chrome://extensions/',
+  'chrome://newtab/',
+]
