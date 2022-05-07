@@ -10,17 +10,26 @@ type Props = {
   deleteGroup: (groupTitle: string) => void
 }
 
-export default function GroupListItem({ group, deleteMode, setActive, deleteGroup }: Props) {
+export default function GroupListItem({
+  group,
+  deleteMode,
+  setActive,
+  deleteGroup,
+}: Props) {
   return (
     <Wrapper active={group.active} onClick={() => setActive(group.title)}>
-      {deleteMode && <DeleteLabel onClick={() => deleteGroup(group.title)}><Text cantSelect={true}>x</Text></DeleteLabel>}
+      {deleteMode && (
+        <DeleteLabel onClick={() => deleteGroup(group.title)}>
+          <Text cantSelect={true}>x</Text>
+        </DeleteLabel>
+      )}
       <Text cantSelect={true}>{group.title}</Text>
     </Wrapper>
   )
 }
 
 const Wrapper = styled.div<{ active: boolean }>`
-position: relative;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -57,7 +66,7 @@ const DeleteLabel = styled.div`
   top: -6px;
   right: -6px;
 
-:hover {
-  background-color: red;
-}
+  :hover {
+    background-color: red;
+  }
 `

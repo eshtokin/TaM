@@ -18,3 +18,7 @@ export type DeleteGroupPayload = {
 export type RemoveGroupPayload = {
   title: string
 }
+
+export type SetActiveGroupPayload = {
+  title: string
+}

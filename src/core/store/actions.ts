@@ -3,6 +3,7 @@ import {
   CreateGroupPayload,
   DeleteGroupPayload,
   RemoveGroupPayload,
+  SetActiveGroupPayload,
 } from './../types'
 import { createAction } from '@reduxjs/toolkit'
 
@@ -19,3 +20,5 @@ export const deleteGroupAction = createAction<DeleteGroupPayload>(
 export const removeGroupAction = createAction<RemoveGroupPayload>(
   'REMOVE_GROUP',
 )
+
+export const setActiveGroupAction = createAction<SetActiveGroupPayload>('SET_ACTIVE_PAYLOAD')

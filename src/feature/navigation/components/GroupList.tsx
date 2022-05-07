@@ -2,7 +2,11 @@ import { useState } from 'react'
 import styled from 'styled-components'
 import GroupListItem from './GroupListItem'
 import { colors } from 'src/core/constants'
-import { createGroupAction, deleteGroupAction } from 'src/core/store/actions'
+import {
+  createGroupAction,
+  deleteGroupAction,
+  setActiveGroupAction,
+} from 'src/core/store/actions'
 import { useAppSelector, useDispatch } from 'src/core/hooks'
 import { Button, Input, Text } from 'src/core/components'
 
@@ -14,11 +18,9 @@ export default function GroupList() {
   const [deleteMode, setDeleteMode] = useState(false)
   const [newGroupName, setNewGroupName] = useState('')
 
-  const setActive = (title: string) => {}
+  const setActive = (title: string) => dispatch(setActiveGroupAction({ title }))
 
-  const deleteGroup = (title: string) => {
-    dispatch(deleteGroupAction({ title }))
-  }
+  const deleteGroup = (title: string) => dispatch(deleteGroupAction({ title }))
 
   const addNewGroup = () => {
     if (!newGroupName.trim().length) return
