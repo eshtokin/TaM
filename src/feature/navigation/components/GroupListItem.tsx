@@ -1,17 +1,17 @@
 import styled from 'styled-components'
 import { Text } from 'src/core/components'
 import { colors } from 'src/core/constants'
+import { Group } from 'src/core/types'
 
-export default function NavigationTabItem({
-  tab,
-  onClick,
-}: {
-  tab: { id: number; title: string; active: boolean }
-  onClick: (tabId: number) => void
-}) {
+type Props = {
+  group: Group
+  onClick: (groupTitle: string) => void
+}
+
+export default function GroupListItem({ group, onClick }: Props) {
   return (
-    <Wrapper active={tab.active} onClick={() => onClick(tab.id)}>
-      <Text cantSelect={true}>{tab.title}</Text>
+    <Wrapper active={group.active} onClick={() => onClick(group.title)}>
+      <Text cantSelect={true}>{group.title}</Text>
     </Wrapper>
   )
 }
