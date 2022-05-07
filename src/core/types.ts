@@ -7,3 +7,7 @@ export type Group = {
 export type GroupStore = {
   groups: Group[]
 }
+
+export type CreateGroupPayload = {
+  title: string
+}

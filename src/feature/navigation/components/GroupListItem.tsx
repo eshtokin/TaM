@@ -23,6 +23,7 @@ const Wrapper = styled.div<{ active: boolean }>`
   padding: 0 10px;
   margin: 0 10px;
   height: 100%;
+  border-radius: 10px;
   background-color: ${colors.pureOrange};
   box-sizing: border-box;
 

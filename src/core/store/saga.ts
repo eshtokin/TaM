@@ -1,13 +1,13 @@
 import { PayloadAction } from '@reduxjs/toolkit'
 import { addGroupAction, createGroupAction } from './actions'
-import { call, put, takeEvery } from 'redux-saga/effects'
-import { Group } from '../types'
+import { put, takeEvery } from 'redux-saga/effects'
+import { CreateGroupPayload, Group } from '../types'
 
-function* createGroupSaga(action: PayloadAction<{ name: string }>): Generator {
-  yield call(console.log, action.payload)
-
+function* createGroupSaga(
+  action: PayloadAction<CreateGroupPayload>,
+): Generator {
   const newGroup: Group = {
-    title: action.payload.name,
+    title: action.payload.title,
     active: false,
   }
 
