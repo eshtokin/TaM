@@ -1,45 +1,38 @@
-import { useState } from 'react'
+import { FC, useState } from 'react'
 import styled from 'styled-components'
 import GroupListItem from './GroupListItem'
 import { colors } from 'src/core/constants'
-import {
-  createGroupAction,
-  deleteGroupAction,
-  setActiveGroupAction,
-} from 'src/core/store/actions'
-import { useAppSelector, useDispatch } from 'src/core/hooks'
 import { Button, Input, Text } from 'src/core/components'
+import { Group } from 'src/core/types'
 
-export default function GroupList() {
-  const dispatch = useDispatch()
-  const groups = useAppSelector((state) => state.group.groups)
-
-  const [editingMode, setEditingMode] = useState(false)
-  const [deleteMode, setDeleteMode] = useState(false)
+type Props = {
+  groups: Group[]
+  editingMode: boolean
+  deleteMode: boolean
+  setActiveGroup: (title: string) => void
+  deleteGroup: (title: string) => void
+  addNewGroup: (title: string) => void
+  toggleDeleteMode: () => void
+  toggleEditingMode: () => void
+}
+const GroupList: FC<Props> = ({
+  groups,
+  editingMode,
+  deleteMode,
+  setActiveGroup,
+  deleteGroup,
+  addNewGroup,
+  toggleDeleteMode,
+  toggleEditingMode,
+}) => {
   const [newGroupName, setNewGroupName] = useState('')
-
-  const setActive = (title: string) => dispatch(setActiveGroupAction({ title }))
-
-  const deleteGroup = (title: string) => dispatch(deleteGroupAction({ title }))
-
-  const addNewGroup = () => {
-    if (!newGroupName.trim().length) return
-    dispatch(createGroupAction({ title: newGroupName }))
-    toggleEditingMode()
-    setNewGroupName('')
-  }
-
-  const toggleDeleteMode = () => setDeleteMode(!deleteMode)
-
-  const toggleEditingMode = () => setEditingMode(!editingMode)
-
   const _renderGroups = () => {
     return (
       <>
         {groups.map((group, index) => (
           <GroupListItem
             key={`group-${index}`}
-            {...{ group, deleteMode, setActive, deleteGroup }}
+            {...{ group, deleteMode, setActiveGroup, deleteGroup }}
           />
         ))}
       </>
@@ -54,7 +47,13 @@ export default function GroupList() {
           value={newGroupName}
           onChange={(e) => setNewGroupName(e.target.value)}
         />
-        <Button onClick={addNewGroup}>
+        <Button
+          onClick={() => {
+            if (!newGroupName.trim().length) return
+            addNewGroup(newGroupName)
+            setNewGroupName('')
+          }}
+        >
           <Text cantSelect={false}>+</Text>
         </Button>
       </>
@@ -105,3 +104,5 @@ const CenterContainer = styled.div`
   flex: 10;
   height: 5vh;
 `
+
+export default GroupList

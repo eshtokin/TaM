@@ -6,18 +6,18 @@ import { Group } from 'src/core/types'
 type Props = {
   group: Group
   deleteMode: boolean
-  setActive: (groupTitle: string) => void
+  setActiveGroup: (groupTitle: string) => void
   deleteGroup: (groupTitle: string) => void
 }
 
 export default function GroupListItem({
   group,
   deleteMode,
-  setActive,
+  setActiveGroup,
   deleteGroup,
 }: Props) {
   return (
-    <Wrapper active={group.active} onClick={() => setActive(group.title)}>
+    <Wrapper active={group.active} onClick={() => setActiveGroup(group.title)}>
       {deleteMode && (
         <DeleteLabel onClick={() => deleteGroup(group.title)}>
           <Text cantSelect={true}>x</Text>
