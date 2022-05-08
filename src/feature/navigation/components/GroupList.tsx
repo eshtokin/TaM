@@ -64,9 +64,11 @@ export default function GroupList() {
   return (
     <GroupListContainer>
       <SideContainer>
-        <Button onClick={toggleDeleteMode}>
-          <Text cantSelect={true}>{deleteMode ? 'x' : '-'}</Text>
-        </Button>
+        {groups.length > 0 && (
+          <Button onClick={toggleDeleteMode}>
+            <Text cantSelect={true}>{deleteMode ? 'x' : '-'}</Text>
+          </Button>
+        )}
       </SideContainer>
       <CenterContainer>
         {_renderGroups()}
