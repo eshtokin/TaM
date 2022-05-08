@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { useAppSelector } from 'src/core/hooks'
+import { useAppSelector } from 'src/store/hooks'
 import {
   setActiveGroupAction,
   deleteGroupAction,
   createGroupAction,
-} from 'src/core/store/actions'
+} from 'src/feature/groups/actions'
 import GroupList from '../components/GroupList'
 
 const GroupListContainer = () => {

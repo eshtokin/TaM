@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import GroupListItem from './GroupListItem'
 import { colors } from 'src/core/constants'
 import { Button, Input, Text } from 'src/core/components'
-import { Group } from 'src/core/types'
+import { Group } from 'src/feature/groups/types'
 
 type Props = {
   groups: Group[]

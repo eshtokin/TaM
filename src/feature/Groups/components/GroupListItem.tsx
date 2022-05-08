@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { Text } from 'src/core/components'
 import { colors } from 'src/core/constants'
-import { Group } from 'src/core/types'
+import { Group } from 'src/feature/groups/types'
 
 type Props = {
   group: Group

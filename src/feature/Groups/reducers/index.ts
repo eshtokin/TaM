@@ -4,7 +4,7 @@ import {
   addGroupAction,
   removeGroupAction,
   setActiveGroupAction,
-} from './actions'
+} from '../actions'
 
 const initialGroupStore: GroupStore = {
   groups: [],

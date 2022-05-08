@@ -1,11 +1,11 @@
-import { RootState } from './index'
+import { RootState } from '../../../store/store'
 import { PayloadAction } from '@reduxjs/toolkit'
 import {
   addGroupAction,
   createGroupAction,
   deleteGroupAction,
   removeGroupAction,
-} from './actions'
+} from '../actions'
 import { put, select, takeLatest } from 'redux-saga/effects'
 import { CreateGroupPayload, DeleteGroupPayload, Group } from '../types'
 
@@ -37,9 +37,9 @@ function* deleteGroupSaga(
   yield put(removeGroupAction({title: action.payload.title}))
 }
 
-function* sagas(): Generator {
+function* groupSaga(): Generator {
   yield takeLatest(createGroupAction, createGroupSaga)
   yield takeLatest(deleteGroupAction, deleteGroupSaga)
 }
 
-export default sagas
+export default groupSaga
