@@ -1,16 +1,19 @@
 import React from 'react'
 import { colors } from 'src/core/constants'
 import styles from 'styled-components'
-import store from 'src/core/store'
+import store, { persistor } from 'src/core/store'
 import { Provider } from 'react-redux'
 import GroupList from 'src/feature/Groups/components/GroupList'
+import { PersistGate } from 'redux-persist/integration/react'
 
 function App() {
   return (
     <Provider store={store}>
-      <MainContainer>
-        <GroupList />
-      </MainContainer>
+      <PersistGate loading={null} persistor={persistor}>
+        <MainContainer>
+          <GroupList />
+        </MainContainer>
+      </PersistGate>
     </Provider>
   )
 }
