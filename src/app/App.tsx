@@ -3,7 +3,7 @@ import { colors } from 'src/core/constants'
 import styles from 'styled-components'
 import store from 'src/core/store'
 import { Provider } from 'react-redux'
-import GroupList from 'src/feature/navigation/components/GroupList'
+import GroupList from 'src/feature/Groups/components/GroupList'
 
 function App() {
   return (
