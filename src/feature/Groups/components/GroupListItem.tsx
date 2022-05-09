@@ -34,19 +34,15 @@ const Wrapper = styled.div<{ active: boolean }>`
   align-items: center;
   justify-content: center;
   padding: 0 10px;
-  margin: 0 10px;
-  height: 100%;
+  margin: 5px 10px;
+  height: 5vh;
   border-radius: 10px;
-  background-color: ${colors.pureOrange};
   box-sizing: border-box;
 
   ${({ active }) =>
     active
-      ? `
-          border-top: 5px solid ${colors.pureOrange};
-          border-bottom: 5px solid ${colors.white};
-        `
-      : null}
+      ? `background-color: ${colors.pureOrange};`
+      : `background-color: ${colors.strongCyan};`}
 
   :hover {
     cursor: pointer;

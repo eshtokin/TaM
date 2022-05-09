@@ -5,14 +5,12 @@ import storage from 'redux-persist/lib/storage'
 import groupReducer from '../feature/groups/reducers'
 import { appReducer } from 'src/feature/app'
 import saga from './saga'
-import tabReducer from 'src/feature/tabs/reducers'
 
 const sagaMiddleware = createSagaMiddleware()
 
 const rootReducer = combineReducers({
   app: appReducer,
   group: groupReducer,
-  tabs: tabReducer,
 })
 
 const persistConfig = {

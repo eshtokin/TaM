@@ -6,6 +6,7 @@ import {
   SetActiveGroupPayload,
 } from '../types'
 import { createAction } from '@reduxjs/toolkit'
+import { Tab } from 'src/core/types'
 
 export const createGroupAction = createAction<CreateGroupPayload>(
   'CREATE_GROUP',
@@ -22,3 +23,7 @@ export const removeGroupAction = createAction<RemoveGroupPayload>(
 )
 
 export const setActiveGroupAction = createAction<SetActiveGroupPayload>('SET_ACTIVE_PAYLOAD')
+
+export const loadCurrentTabsAction = createAction('LOAD_CURRENT_TABS')
+
+export const setCurrentTabsAction = createAction<Tab[]>('SET_CURRENT_TABS')

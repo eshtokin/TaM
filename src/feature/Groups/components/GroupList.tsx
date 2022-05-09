@@ -15,6 +15,7 @@ type Props = {
   toggleDeleteMode: () => void
   toggleEditingMode: () => void
 }
+
 const GroupList: FC<Props> = ({
   groups,
   editingMode,
@@ -26,6 +27,7 @@ const GroupList: FC<Props> = ({
   toggleEditingMode,
 }) => {
   const [newGroupName, setNewGroupName] = useState('')
+
   const _renderGroups = () => {
     return (
       <>
@@ -62,47 +64,53 @@ const GroupList: FC<Props> = ({
 
   return (
     <GroupListContainer>
-      <SideContainer>
-        {groups.length > 0 && (
-          <Button onClick={toggleDeleteMode}>
-            <Text cantSelect={true}>{deleteMode ? 'x' : '-'}</Text>
-          </Button>
-        )}
-      </SideContainer>
-      <CenterContainer>
-        {_renderGroups()}
+      <ButtonRow>
+        <SideContainer>
+          {groups.length > 0 && (
+            <Button onClick={toggleDeleteMode}>
+              <Text cantSelect={true}>{deleteMode ? 'x' : '-'}</Text>
+            </Button>
+          )}
+        </SideContainer>
         {editingMode && _renderAddRow()}
-      </CenterContainer>
-      <SideContainer>
-        <Button onClick={toggleEditingMode}>
-          <Text cantSelect={true}>{editingMode ? 'x' : '+'}</Text>
-        </Button>
-      </SideContainer>
+        <SideContainer>
+          <Button onClick={toggleEditingMode}>
+            <Text cantSelect={true}>{editingMode ? 'x' : '+'}</Text>
+          </Button>
+        </SideContainer>
+      </ButtonRow>
+      <CenterContainer>{_renderGroups()}</CenterContainer>
     </GroupListContainer>
   )
 }
 
 const GroupListContainer = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  align-self: center;
+  flex-direction: column;
+  margin: auto;
+  width: 20vw;
+  height: 95vh;
+  margin: 10px 5px 10px 10px;
+  border-radius: 10px;
   background-color: ${colors.verySoftBlue};
-  width: 50wh;
-  padding: 5px 0;
 `
 
 const SideContainer = styled.div`
   display: flex;
   justify-content: center;
-  flex: 1;
 `
 
 const CenterContainer = styled.div`
   display: flex;
-  justify-content: center;
-  flex: 10;
-  height: 5vh;
+  flex-direction: column;
+`
+
+const ButtonRow = styled.div`
+  display: flex;
+  height: 6vh;
+  align-items: center;
+  justify-content: space-around;
 `
 
 export default GroupList

@@ -4,10 +4,14 @@ import {
   addGroupAction,
   createGroupAction,
   deleteGroupAction,
+  loadCurrentTabsAction,
   removeGroupAction,
+  setCurrentTabsAction,
 } from '../actions'
 import { put, select, takeLatest } from 'redux-saga/effects'
 import { CreateGroupPayload, DeleteGroupPayload, Group } from '../types'
+import { Tab } from 'src/core/types'
+import { MOCK_TABS } from '../constants/mock'
 
 function* createGroupSaga(
   action: PayloadAction<CreateGroupPayload>,
@@ -25,6 +29,7 @@ function* createGroupSaga(
   const newGroup: Group = {
     title: action.payload.title,
     active: false,
+    tabs: [],
   }
 
   yield put(addGroupAction(newGroup))
@@ -35,6 +40,21 @@ function* deleteGroupSaga(
 ): Generator {
   // TODO: add confirmation modal or restore btn
   yield put(removeGroupAction({title: action.payload.title}))
+}
+
+function* loadCurrentTabsSaga(): Generator {
+  const isMockedState = yield select(
+    (state) => (state as RootState).app.isMockedState,
+  )
+
+  if (isMockedState) {
+    yield put(setCurrentTabsAction(MOCK_TABS))
+    return
+  }
+
+  const tabs = yield chrome.tabs.query({ currentWindow: true })
+
+  yield put(setCurrentTabsAction(tabs as Tab[]))
 }
 
 function* groupSaga(): Generator {

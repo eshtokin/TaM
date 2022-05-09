@@ -9,7 +9,7 @@ type Props = {
 const TabList: FC<Props> = ({ tabs }) => {
   return (
     <Container>
-      {tabs.map((tab, index) => (
+      {tabs?.map((tab, index) => (
         <P>
           {index} - {tab.title}
         </P>
@@ -23,8 +23,8 @@ const Container = styled.div`
   align-self: center;
   flex-direction: column;
   margin: auto;
-  width: 70vw;
-  height: 90vh;
+  height: 95vh;
+  margin: 10px 10px 10px 5px;
   border-radius: 10px;
   background-color: ${colors.verySoftBlue};
 `

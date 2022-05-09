@@ -28,6 +28,7 @@ const groupReducer = createReducer(initialGroupStore, (build) => {
       active: action.payload.title === group.title,
     })),
   }))
+
 })
 
 export default groupReducer

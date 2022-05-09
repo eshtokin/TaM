@@ -1,6 +1,9 @@
+import { Tab } from "src/core/types"
+
 export type Group = {
   title: string
   active: boolean
+  tabs: Tab[]
 }
 
 export type GroupStore = {
