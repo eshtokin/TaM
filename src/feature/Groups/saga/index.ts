@@ -1,17 +1,19 @@
+import {
+  addCurrentTabsToGroupAction,
+  updateGroupsAction,
+} from './../actions/index'
 import { RootState } from '../../../store/store'
 import { PayloadAction } from '@reduxjs/toolkit'
 import {
   addGroupAction,
   createGroupAction,
   deleteGroupAction,
-  loadCurrentTabsAction,
   removeGroupAction,
-  setCurrentTabsAction,
 } from '../actions'
-import { put, select, takeLatest } from 'redux-saga/effects'
+import { call, put, select, takeLatest } from 'redux-saga/effects'
 import { CreateGroupPayload, DeleteGroupPayload, Group } from '../types'
 import { Tab } from 'src/core/types'
-import { MOCK_TABS } from '../constants/mock'
+import { getTabsFromCurrentWindow } from 'src/chrome/tabs'
 
 function* createGroupSaga(
   action: PayloadAction<CreateGroupPayload>,
@@ -33,33 +35,37 @@ function* createGroupSaga(
   }
 
   yield put(addGroupAction(newGroup))
+  yield put(addCurrentTabsToGroupAction(newGroup.title))
 }
 
 function* deleteGroupSaga(
   action: PayloadAction<DeleteGroupPayload>,
 ): Generator {
   // TODO: add confirmation modal or restore btn
-  yield put(removeGroupAction({title: action.payload.title}))
+  yield put(removeGroupAction({ title: action.payload.title }))
 }
 
-function* loadCurrentTabsSaga(): Generator {
-  const isMockedState = yield select(
-    (state) => (state as RootState).app.isMockedState,
+function* addCurrentTabsToGroupSaga(action: PayloadAction<string>): Generator {
+  const groupTitle = action.payload
+  const group = yield select((state) =>
+    (state as RootState).group.groups.find((g) => g.title === groupTitle),
   )
 
-  if (isMockedState) {
-    yield put(setCurrentTabsAction(MOCK_TABS))
-    return
-  }
+  if (!group) return
 
-  const tabs = yield chrome.tabs.query({ currentWindow: true })
+  const currentTabs = yield call(getTabsFromCurrentWindow)
 
-  yield put(setCurrentTabsAction(tabs as Tab[]))
+  const duplicatedGroup = { ...group as Group};
+  duplicatedGroup.tabs = [...currentTabs as Tab[]]
+
+  yield put(updateGroupsAction(duplicatedGroup))
 }
 
 function* groupSaga(): Generator {
   yield takeLatest(createGroupAction, createGroupSaga)
   yield takeLatest(deleteGroupAction, deleteGroupSaga)
+  yield takeLatest(addCurrentTabsToGroupAction, addCurrentTabsToGroupSaga)
 }
 
 export default groupSaga
+
