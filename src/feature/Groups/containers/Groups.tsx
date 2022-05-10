@@ -15,7 +15,6 @@ const GroupListContainer = () => {
   const groups = useAppSelector((state) => state.group.groups)
   const currentTabs = groups.find(g => g.active)?.tabs || []
 
-  const [editingMode, setEditingMode] = useState(false)
   const [deleteMode, setDeleteMode] = useState(false)
 
   const setActiveGroup = (title: string) =>
@@ -25,12 +24,9 @@ const GroupListContainer = () => {
 
   const addNewGroup = (title: string) => {
     dispatch(createGroupAction({ title }))
-    toggleEditingMode()
   }
 
   const toggleDeleteMode = () => setDeleteMode(!deleteMode)
-
-  const toggleEditingMode = () => setEditingMode(!editingMode)
 
   useEffect(() => {
     dispatch(loadCurrentTabsAction())
@@ -41,13 +37,11 @@ const GroupListContainer = () => {
       <GroupList
         {...{
           groups,
-          editingMode,
           deleteMode,
           setActiveGroup,
           deleteGroup,
           addNewGroup,
           toggleDeleteMode,
-          toggleEditingMode,
         }}
       />
       <TabList {...{ tabs: currentTabs }} />

@@ -7,24 +7,20 @@ import { Group } from 'src/feature/groups/types'
 
 type Props = {
   groups: Group[]
-  editingMode: boolean
   deleteMode: boolean
   setActiveGroup: (title: string) => void
   deleteGroup: (title: string) => void
   addNewGroup: (title: string) => void
   toggleDeleteMode: () => void
-  toggleEditingMode: () => void
 }
 
 const GroupList: FC<Props> = ({
   groups,
-  editingMode,
   deleteMode,
   setActiveGroup,
   deleteGroup,
   addNewGroup,
   toggleDeleteMode,
-  toggleEditingMode,
 }) => {
   const [newGroupName, setNewGroupName] = useState('')
 
@@ -72,12 +68,7 @@ const GroupList: FC<Props> = ({
             </Button>
           )}
         </SideContainer>
-        {editingMode && _renderAddRow()}
-        <SideContainer>
-          <Button onClick={toggleEditingMode}>
-            <Text cantSelect={true}>{editingMode ? 'x' : '+'}</Text>
-          </Button>
-        </SideContainer>
+         {_renderAddRow()}
       </ButtonRow>
       <CenterContainer>{_renderGroups()}</CenterContainer>
     </GroupListContainer>
