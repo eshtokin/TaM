@@ -6,14 +6,17 @@ import {
   deleteGroupAction,
   createGroupAction,
   loadCurrentTabsAction,
+  openTabAction,
 } from 'src/feature/groups/actions'
 import GroupList from '../components/GroupList'
 import TabList from '../components/TabList'
+import { Tab } from 'src/core/types'
+import { getBookmarksList } from 'src/chrome/bookmarks'
 
 const GroupListContainer = () => {
   const dispatch = useDispatch()
   const groups = useAppSelector((state) => state.group.groups)
-  const currentTabs = groups.find(g => g.active)?.tabs || []
+  const currentTabs = groups.find((g) => g.active)?.tabs || []
 
   const [deleteMode, setDeleteMode] = useState(false)
 
@@ -30,7 +33,14 @@ const GroupListContainer = () => {
 
   useEffect(() => {
     dispatch(loadCurrentTabsAction())
-  })
+  }, [dispatch])
+
+  useEffect(() => {
+    getBookmarksList()
+  }, [])
+  const openTab = (tab: Tab) => {
+    dispatch(openTabAction(tab))
+  }
 
   return (
     <>
@@ -44,7 +54,7 @@ const GroupListContainer = () => {
           toggleDeleteMode,
         }}
       />
-      <TabList {...{ tabs: currentTabs }} />
+      <TabList {...{ tabs: currentTabs, openTab }} />
     </>
   )
 }

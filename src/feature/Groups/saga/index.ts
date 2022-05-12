@@ -1,5 +1,6 @@
 import {
   addCurrentTabsToGroupAction,
+  openTabAction,
   updateGroupsAction,
 } from './../actions/index'
 import { RootState } from '../../../store/store'
@@ -13,7 +14,7 @@ import {
 import { call, put, select, takeLatest } from 'redux-saga/effects'
 import { CreateGroupPayload, DeleteGroupPayload, Group } from '../types'
 import { Tab } from 'src/core/types'
-import { getTabsFromCurrentWindow } from 'src/chrome/tabs'
+import { getTabsFromCurrentWindow, openTab } from 'src/chrome/tabs'
 
 function* createGroupSaga(
   action: PayloadAction<CreateGroupPayload>,
@@ -55,17 +56,21 @@ function* addCurrentTabsToGroupSaga(action: PayloadAction<string>): Generator {
 
   const currentTabs = yield call(getTabsFromCurrentWindow)
 
-  const duplicatedGroup = { ...group as Group};
-  duplicatedGroup.tabs = [...currentTabs as Tab[]]
+  const duplicatedGroup = { ...(group as Group) }
+  duplicatedGroup.tabs = [...(currentTabs as Tab[])]
 
   yield put(updateGroupsAction(duplicatedGroup))
+}
+
+function* openTabSaga(action: PayloadAction<Tab>): Generator {
+  yield openTab(action.payload, true)
 }
 
 function* groupSaga(): Generator {
   yield takeLatest(createGroupAction, createGroupSaga)
   yield takeLatest(deleteGroupAction, deleteGroupSaga)
   yield takeLatest(addCurrentTabsToGroupAction, addCurrentTabsToGroupSaga)
+  yield takeLatest(openTabAction, openTabSaga)
 }
 
 export default groupSaga
-

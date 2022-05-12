@@ -31,3 +31,5 @@ export const loadCurrentTabsAction = createAction('LOAD_CURRENT_TABS')
 export const setCurrentTabsAction = createAction<Tab[]>('SET_CURRENT_TABS')
 
 export const addCurrentTabsToGroupAction = createAction<string>('ADD_CURRENT_TABS_TO_GROUP')
+
+export const openTabAction = createAction<Tab>('OPEN_TAB_ACTION')
