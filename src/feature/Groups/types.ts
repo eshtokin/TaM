@@ -1,4 +1,4 @@
-import { Tab } from "src/core/types"
+import { Tab } from 'src/core/types'
 
 export type Group = {
   title: string
@@ -8,6 +8,7 @@ export type Group = {
 
 export type GroupStore = {
   groups: Group[]
+  activeGroup: Group | null
 }
 
 export type CreateGroupPayload = {

@@ -1,17 +1,19 @@
-import { colors } from 'src/core/constants'
-import styles from 'styled-components'
-import store, { persistor } from 'src/store/store'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
-import { Groups } from 'src/feature/groups'
+import styles, { ThemeProvider } from 'styled-components'
+import store, { persistor } from 'src/store/store'
+import { colors, theme } from 'src/core/constants'
+import { Groups } from '../groups'
 
 function App() {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <MainContainer>
-          <Groups />
-        </MainContainer>
+        <ThemeProvider theme={theme}>
+          <MainContainer>
+            <Groups />
+          </MainContainer>
+        </ThemeProvider>
       </PersistGate>
     </Provider>
   )
@@ -24,6 +26,6 @@ const MainContainer = styles.div`
   min-height: 400px;
   min-width: 400px;
   background: ${colors.veryDarkBlue};
-
 `
+
 export default App

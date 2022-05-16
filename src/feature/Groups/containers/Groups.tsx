@@ -7,11 +7,11 @@ import {
   createGroupAction,
   loadCurrentTabsAction,
   openTabAction,
+  deleteTabAction,
 } from 'src/feature/groups/actions'
 import GroupList from '../components/GroupList'
 import TabList from '../components/TabList'
 import { Tab } from 'src/core/types'
-import { getBookmarksList } from 'src/chrome/bookmarks'
 
 const GroupListContainer = () => {
   const dispatch = useDispatch()
@@ -35,11 +35,12 @@ const GroupListContainer = () => {
     dispatch(loadCurrentTabsAction())
   }, [dispatch])
 
-  useEffect(() => {
-    getBookmarksList()
-  }, [])
   const openTab = (tab: Tab) => {
     dispatch(openTabAction(tab))
+  }
+
+  const deleteTab = (tab: Tab) => {
+    dispatch(deleteTabAction(tab))
   }
 
   return (
@@ -54,7 +55,7 @@ const GroupListContainer = () => {
           toggleDeleteMode,
         }}
       />
-      <TabList {...{ tabs: currentTabs, openTab }} />
+      <TabList {...{ tabs: currentTabs, openTab, deleteTab }} />
     </>
   )
 }

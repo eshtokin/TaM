@@ -79,7 +79,6 @@ const GroupListContainer = styled.div`
   display: flex;
   align-self: center;
   flex-direction: column;
-  margin: auto;
   width: 20vw;
   height: 95vh;
   margin: 10px 5px 10px 10px;

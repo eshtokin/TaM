@@ -1,4 +1,4 @@
-import { updateGroupsAction } from './../actions/index'
+import { updateGroupAction } from './../actions/index'
 import { createReducer } from '@reduxjs/toolkit'
 import { GroupStore } from '../types'
 import {
@@ -9,6 +9,7 @@ import {
 
 const initialGroupStore: GroupStore = {
   groups: [],
+  activeGroup: null,
 }
 
 const groupReducer = createReducer(initialGroupStore, (build) => {
@@ -30,7 +31,7 @@ const groupReducer = createReducer(initialGroupStore, (build) => {
     })),
   }))
 
-  build.addCase(updateGroupsAction, (state, action) => ({
+  build.addCase(updateGroupAction, (state, action) => ({
     ...state,
     groups: state.groups.map((group) => {
       return group.title === action.payload.title ? action.payload : group

@@ -1,7 +1,8 @@
 import {
   addCurrentTabsToGroupAction,
+  deleteTabAction,
   openTabAction,
-  updateGroupsAction,
+  updateGroupAction,
 } from './../actions/index'
 import { RootState } from '../../../store/store'
 import { PayloadAction } from '@reduxjs/toolkit'
@@ -59,11 +60,24 @@ function* addCurrentTabsToGroupSaga(action: PayloadAction<string>): Generator {
   const duplicatedGroup = { ...(group as Group) }
   duplicatedGroup.tabs = [...(currentTabs as Tab[])]
 
-  yield put(updateGroupsAction(duplicatedGroup))
+  yield put(updateGroupAction(duplicatedGroup))
 }
 
 function* openTabSaga(action: PayloadAction<Tab>): Generator {
   yield openTab(action.payload, true)
+}
+
+function* deleteTabSaga(action: PayloadAction<Tab>): Generator {
+  const stateGroups = yield select((state) => (state as RootState).group.groups)
+  const groups = [...(stateGroups as Group[])]
+  if (!groups) return
+
+  const currentGroup = groups.filter((g) => g.active)[0]
+  const updatedGroup = {
+    ...currentGroup,
+    tabs: currentGroup.tabs.filter((t) => t.id !== action.payload.id),
+  }
+  yield put(updateGroupAction(updatedGroup))
 }
 
 function* groupSaga(): Generator {
@@ -71,6 +85,7 @@ function* groupSaga(): Generator {
   yield takeLatest(deleteGroupAction, deleteGroupSaga)
   yield takeLatest(addCurrentTabsToGroupAction, addCurrentTabsToGroupSaga)
   yield takeLatest(openTabAction, openTabSaga)
+  yield takeLatest(deleteTabAction, deleteTabSaga)
 }
 
 export default groupSaga
