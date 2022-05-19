@@ -8,6 +8,7 @@ import {
   loadCurrentTabsAction,
   openTabAction,
   deleteTabAction,
+  openGroupAction,
 } from 'src/feature/groups/actions'
 import GroupList from '../components/GroupList'
 import TabList from '../components/TabList'
@@ -43,6 +44,10 @@ const GroupListContainer = () => {
     dispatch(deleteTabAction(tab))
   }
 
+  const openGroup = (title: string) => {
+    dispatch(openGroupAction(title))
+  }
+
   return (
     <>
       <GroupList
@@ -50,6 +55,7 @@ const GroupListContainer = () => {
           groups,
           deleteMode,
           setActiveGroup,
+          openGroup,
           deleteGroup,
           addNewGroup,
           toggleDeleteMode,

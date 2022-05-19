@@ -1,12 +1,11 @@
-import styled from 'styled-components'
-import { Text } from 'src/core/components'
-import { colors } from 'src/core/constants'
 import { Group } from 'src/feature/groups/types'
+import { Button, ButtonGroup, Paper } from '@mui/material'
 
 type Props = {
   group: Group
   deleteMode: boolean
   setActiveGroup: (groupTitle: string) => void
+  openGroup: (groupTitle: string) => void
   deleteGroup: (groupTitle: string) => void
 }
 
@@ -14,55 +13,33 @@ export default function GroupListItem({
   group,
   deleteMode,
   setActiveGroup,
+  openGroup,
   deleteGroup,
 }: Props) {
   return (
-    <Wrapper active={group.active} onClick={() => setActiveGroup(group.title)}>
-      {deleteMode && (
-        <DeleteLabel onClick={() => deleteGroup(group.title)}>
-          <Text cantSelect={true}>x</Text>
-        </DeleteLabel>
-      )}
-      <Text cantSelect={true}>{group.title}</Text>
-    </Wrapper>
+    <Paper
+      sx={{
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-evenly',
+        padding: '10px',
+        margin: '10px',
+      }}
+      onClick={() => setActiveGroup(group.title)}>
+      <ButtonGroup>
+        <span
+          style={{
+            fontSize: '20px',
+            padding: '5px 0 0 0 ',
+            margin: '0 10px 0 0',
+            fontWeight: '600',
+          }}>
+          {group.title}
+        </span>
+        <Button onClick={() => openGroup(group.title)}>open</Button>
+        <Button onClick={() => deleteGroup(group.title)}>delete</Button>
+      </ButtonGroup>
+    </Paper>
   )
 }
-
-const Wrapper = styled.div<{ active: boolean }>`
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 10px;
-  margin: 5px 10px;
-  height: 5vh;
-  border-radius: 10px;
-  box-sizing: border-box;
-
-  ${({ active }) =>
-    active
-      ? `background-color: ${colors.pureOrange};`
-      : `background-color: ${colors.strongCyan};`}
-
-  :hover {
-    cursor: pointer;
-  }
-`
-
-const DeleteLabel = styled.div`
-  border-radius: 50%;
-  height: 20px;
-  width: 20px;
-  padding: 2px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: ${colors.black};
-  position: absolute;
-  top: -6px;
-  right: -6px;
-
-  :hover {
-    background-color: red;
-  }
-`

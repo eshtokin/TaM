@@ -18,8 +18,7 @@ const TabList: React.FC<Props> = ({ tabs, openTab, deleteTab }) => {
         alignSelf: 'center',
         background: colors.verySoftBlue,
         borderRadius: '10px',
-      }}
-    >
+      }}>
       {tabs.map((tab) => (
         <TabListItem {...{ tab, openTab, deleteTab }} />
       ))}

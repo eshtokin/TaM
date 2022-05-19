@@ -1,6 +1,7 @@
 import {
   addCurrentTabsToGroupAction,
   deleteTabAction,
+  openGroupAction,
   openTabAction,
   updateGroupAction,
 } from './../actions/index'
@@ -80,12 +81,27 @@ function* deleteTabSaga(action: PayloadAction<Tab>): Generator {
   yield put(updateGroupAction(updatedGroup))
 }
 
+function* openGroupSagas(action: PayloadAction<string>): Generator {
+  const groupTitle = action.payload
+  const groups = yield select((state) => (state as RootState).group.groups)
+  const currentGroup = (groups as Group[]).filter(
+    (g) => g.title === groupTitle,
+  )[0]
+
+  if (currentGroup) {
+    currentGroup.tabs.forEach((t) => {
+      openTab(t)
+    })
+  }
+}
+
 function* groupSaga(): Generator {
   yield takeLatest(createGroupAction, createGroupSaga)
   yield takeLatest(deleteGroupAction, deleteGroupSaga)
   yield takeLatest(addCurrentTabsToGroupAction, addCurrentTabsToGroupSaga)
   yield takeLatest(openTabAction, openTabSaga)
   yield takeLatest(deleteTabAction, deleteTabSaga)
+  yield takeLatest(openGroupAction, openGroupSagas)
 }
 
 export default groupSaga

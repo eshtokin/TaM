@@ -1,4 +1,4 @@
-import { Tab } from "src/core/types";
+import { Tab } from 'src/core/types'
 
 export const MOCK_TABS: Tab[] = [
   {
@@ -19,8 +19,7 @@ export const MOCK_TABS: Tab[] = [
     selected: false,
     status: 'unloaded',
     title: 'How to Secure Mobile Apps with SSL Certificates?',
-    url:
-      'https://comodosslstore.com/blog/ssl-certificates-add-bulletproof-mobile-app-security.html',
+    url: 'https://comodosslstore.com/blog/ssl-certificates-add-bulletproof-mobile-app-security.html',
     width: 1680,
     windowId: 36,
   },
@@ -42,8 +41,7 @@ export const MOCK_TABS: Tab[] = [
     status: 'complete',
     title:
       'Announcing NPM Rising Stars. Why Should You Join the NPM Rising… | by Neptune Mutual | Neptune Mutual | Apr, 2022 | Medium',
-    url:
-      'https://medium.com/neptune-mutual/announcing-neptune-mutual-rising-stars-cee98a098696#id_token=eyJhbGciOiJSUzI1NiIsImtpZCI6ImQzMzJhYjU0NWNjMTg5ZGYxMzNlZmRkYjNhNmM0MDJlYmY0ODlhYzIiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJuYmYiOjE2NTA0ODkxNjIsImF1ZCI6IjIxNjI5NjAzNTgzNC1rMWs2cWUwNjBzMnRwMmEyamFtNGxqZGNtczAwc3R0Zy5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsInN1YiI6IjEwMTc5NTQ5NzQzMDI4NTMzNzgxMyIsImVtYWlsIjoiZXNodG9raUBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiYXpwIjoiMjE2Mjk2MDM1ODM0LWsxazZxZTA2MHMydHAyYTJqYW00bGpkY21zMDBzdHRnLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwibmFtZSI6IkFsZXggRXNodG9raW4iLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EtL0FPaDE0R2lfekJ4VVVpVGVBczZueDlQdFhwVUpnSzBDSUNJbkdkeEM1WTVxYXc9czk2LWMiLCJnaXZlbl9uYW1lIjoiQWxleCIsImZhbWlseV9uYW1lIjoiRXNodG9raW4iLCJpYXQiOjE2NTA0ODk0NjIsImV4cCI6MTY1MDQ5MzA2MiwianRpIjoiMTNiOTc2ZjE0MmVmOTJjZTRmZmNkNDc3OTBjZDRkYTkwMzIwODRkOCJ9.XA4ASGSzWboMVaMdF7snS-GCRiKNpngcsv2Qv8uV5M3sEi3au49Iv8PX5xvZ0it4V5Clm-6t4RXdoZSVwcSVcfCXA5wNNKUdjuh5FSPnLDcys8aEbWkc108nD3PaqKIvQ6Dooz4hUNdoFBH-Fd7-FhAFZYv_1VlvcUC1yG19lDtevS1_XTUT-jbzhl6wVX3ttjFagweuncIuqlrZ-QwBy2dm8EOhlLo7AsASp9lhS8sIw469KzLOn5Qcj6Ven6trsZZ95SUNZz-4qf02Moe-jx5uU0gNUF93cNkTusmz2VjwgZJ7xqnAzLU-pYLo0xsADE2cIwBSUX-etNYrkMEQ5A',
+    url: 'https://medium.com/neptune-mutual/announcing-neptune-mutual-rising-stars-cee98a098696#id_token=eyJhbGciOiJSUzI1NiIsImtpZCI6ImQzMzJhYjU0NWNjMTg5ZGYxMzNlZmRkYjNhNmM0MDJlYmY0ODlhYzIiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJuYmYiOjE2NTA0ODkxNjIsImF1ZCI6IjIxNjI5NjAzNTgzNC1rMWs2cWUwNjBzMnRwMmEyamFtNGxqZGNtczAwc3R0Zy5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsInN1YiI6IjEwMTc5NTQ5NzQzMDI4NTMzNzgxMyIsImVtYWlsIjoiZXNodG9raUBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiYXpwIjoiMjE2Mjk2MDM1ODM0LWsxazZxZTA2MHMydHAyYTJqYW00bGpkY21zMDBzdHRnLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwibmFtZSI6IkFsZXggRXNodG9raW4iLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EtL0FPaDE0R2lfekJ4VVVpVGVBczZueDlQdFhwVUpnSzBDSUNJbkdkeEM1WTVxYXc9czk2LWMiLCJnaXZlbl9uYW1lIjoiQWxleCIsImZhbWlseV9uYW1lIjoiRXNodG9raW4iLCJpYXQiOjE2NTA0ODk0NjIsImV4cCI6MTY1MDQ5MzA2MiwianRpIjoiMTNiOTc2ZjE0MmVmOTJjZTRmZmNkNDc3OTBjZDRkYTkwMzIwODRkOCJ9.XA4ASGSzWboMVaMdF7snS-GCRiKNpngcsv2Qv8uV5M3sEi3au49Iv8PX5xvZ0it4V5Clm-6t4RXdoZSVwcSVcfCXA5wNNKUdjuh5FSPnLDcys8aEbWkc108nD3PaqKIvQ6Dooz4hUNdoFBH-Fd7-FhAFZYv_1VlvcUC1yG19lDtevS1_XTUT-jbzhl6wVX3ttjFagweuncIuqlrZ-QwBy2dm8EOhlLo7AsASp9lhS8sIw469KzLOn5Qcj6Ven6trsZZ95SUNZz-4qf02Moe-jx5uU0gNUF93cNkTusmz2VjwgZJ7xqnAzLU-pYLo0xsADE2cIwBSUX-etNYrkMEQ5A',
     width: 1680,
     windowId: 36,
   },
@@ -65,8 +63,7 @@ export const MOCK_TABS: Tab[] = [
     status: 'complete',
     title:
       'Voltz testnet detailed version tutorial (kovan network) | by 区块视界@BlockHorizon | Apr, 2022 | Medium',
-    url:
-      'https://medium.com/@BlockHorizon/voltz-testnet-detailed-version-tutorial-kovan-network-da824397c762',
+    url: 'https://medium.com/@BlockHorizon/voltz-testnet-detailed-version-tutorial-kovan-network-da824397c762',
     width: 1680,
     windowId: 36,
   },
@@ -88,8 +85,7 @@ export const MOCK_TABS: Tab[] = [
     status: 'complete',
     title:
       '$2,500,000 NEAR Rewards SuperBoost | by Aurigami Finance | Aurigami | Apr, 2022 | Medium',
-    url:
-      'https://medium.com/aurigami/2-500-000-near-rewards-superboost-f170aab439bd',
+    url: 'https://medium.com/aurigami/2-500-000-near-rewards-superboost-f170aab439bd',
     width: 1680,
     windowId: 36,
   },
@@ -111,8 +107,7 @@ export const MOCK_TABS: Tab[] = [
     selected: false,
     status: 'complete',
     title: 'SonarCloud setup - Maknet - Confluence',
-    url:
-      'https://makroo2o.atlassian.net/wiki/spaces/MAN/pages/461963736/SonarCloud+setup',
+    url: 'https://makroo2o.atlassian.net/wiki/spaces/MAN/pages/461963736/SonarCloud+setup',
     width: 1680,
     windowId: 36,
   },
@@ -134,8 +129,7 @@ export const MOCK_TABS: Tab[] = [
     selected: false,
     status: 'complete',
     title: 'OneTrust Knowledge Center - Maknet - Confluence',
-    url:
-      'https://makroo2o.atlassian.net/wiki/spaces/MAN/pages/462782586/OneTrust+Knowledge+Center',
+    url: 'https://makroo2o.atlassian.net/wiki/spaces/MAN/pages/462782586/OneTrust+Knowledge+Center',
     width: 1680,
     windowId: 36,
   },
@@ -180,8 +174,7 @@ export const MOCK_TABS: Tab[] = [
     status: 'complete',
     title:
       'Garmin Instinct Solar - купити смарт годинник: ціни, відгуки, характеристики > вартість в магазинах України: Киев, Днепропетровск, Львов, Одесса',
-    url:
-      'https://ek.ua/ua/ek-item.php?resolved_name_=GARMIN-INSTINCT-SOLAR&view_=tbl',
+    url: 'https://ek.ua/ua/ek-item.php?resolved_name_=GARMIN-INSTINCT-SOLAR&view_=tbl',
     width: 1680,
     windowId: 36,
   },
@@ -204,8 +197,7 @@ export const MOCK_TABS: Tab[] = [
     status: 'complete',
     title:
       'Sea To Summit Delta InsulMug, купить термокружку в Киеве, доступная цена на туристическое снаряжение, продажа в каталоге интернет магазина туристического снаряжения Multisport',
-    url:
-      'https://multisport.com.ua/pohodnaya-kuhnya/termokruzhki/sea-to-summit-delta-insulmug',
+    url: 'https://multisport.com.ua/pohodnaya-kuhnya/termokruzhki/sea-to-summit-delta-insulmug',
     width: 1680,
     windowId: 36,
   },
@@ -227,8 +219,7 @@ export const MOCK_TABS: Tab[] = [
     selected: false,
     status: 'complete',
     title: 'Термокружка Tramp TRC-009 · купить Киев :: Мультиспорт',
-    url:
-      'https://multisport.com.ua/pohodnaya-kuhnya/termokruzhki/tramp-trc-009%20',
+    url: 'https://multisport.com.ua/pohodnaya-kuhnya/termokruzhki/tramp-trc-009%20',
     width: 1680,
     windowId: 36,
   },
@@ -251,8 +242,7 @@ export const MOCK_TABS: Tab[] = [
     status: 'complete',
     title:
       'Tramp TRC-100 0,5 L. Цена, купить термочашку Tramp в Киеве. Туристический магазин MULTISPORT.com.ua',
-    url:
-      'https://multisport.com.ua/pohodnaya-kuhnya/termokruzhki/tramp-trc-100-05-l',
+    url: 'https://multisport.com.ua/pohodnaya-kuhnya/termokruzhki/tramp-trc-100-05-l',
     width: 1680,
     windowId: 36,
   },
@@ -275,8 +265,7 @@ export const MOCK_TABS: Tab[] = [
     status: 'complete',
     title:
       'Tramp TRC-137. Цена, купить стакан Tramp в Киеве. Туристический магазин MULTISPORT.com.ua',
-    url:
-      'https://multisport.com.ua/pohodnaya-kuhnya/termokruzhki/tramp-trc-137',
+    url: 'https://multisport.com.ua/pohodnaya-kuhnya/termokruzhki/tramp-trc-137',
     width: 1680,
     windowId: 36,
   },
@@ -298,8 +287,7 @@ export const MOCK_TABS: Tab[] = [
     status: 'complete',
     title:
       'How To Create A Google Chrome Extension With React | by Artem Diashkin | LITSLINK | Medium',
-    url:
-      'https://medium.com/litslink/how-to-create-google-chrome-extension-using-react-js-5c9e343323ff',
+    url: 'https://medium.com/litslink/how-to-create-google-chrome-extension-using-react-js-5c9e343323ff',
     width: 1680,
     windowId: 36,
   },
@@ -362,8 +350,7 @@ export const MOCK_TABS: Tab[] = [
     selected: false,
     status: 'complete',
     title: 'chrome.tabs - Chrome Developers',
-    url:
-      'https://developer.chrome.com/docs/extensions/reference/tabs/#get-the-current-tab',
+    url: 'https://developer.chrome.com/docs/extensions/reference/tabs/#get-the-current-tab',
     width: 1680,
     windowId: 36,
   },

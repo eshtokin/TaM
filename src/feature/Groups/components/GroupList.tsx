@@ -9,6 +9,7 @@ type Props = {
   groups: Group[]
   deleteMode: boolean
   setActiveGroup: (title: string) => void
+  openGroup: (title: string) => void
   deleteGroup: (title: string) => void
   addNewGroup: (title: string) => void
   toggleDeleteMode: () => void
@@ -18,6 +19,7 @@ const GroupList: FC<Props> = ({
   groups,
   deleteMode,
   setActiveGroup,
+  openGroup,
   deleteGroup,
   addNewGroup,
   toggleDeleteMode,
@@ -30,7 +32,7 @@ const GroupList: FC<Props> = ({
         {groups.map((group, index) => (
           <GroupListItem
             key={`group-${index}`}
-            {...{ group, deleteMode, setActiveGroup, deleteGroup }}
+            {...{ group, openGroup, deleteMode, setActiveGroup, deleteGroup }}
           />
         ))}
       </>
@@ -50,8 +52,7 @@ const GroupList: FC<Props> = ({
             if (!newGroupName.trim().length) return
             addNewGroup(newGroupName)
             setNewGroupName('')
-          }}
-        >
+          }}>
           <Text cantSelect={false}>+</Text>
         </Button>
       </>
@@ -68,7 +69,7 @@ const GroupList: FC<Props> = ({
             </Button>
           )}
         </SideContainer>
-         {_renderAddRow()}
+        {_renderAddRow()}
       </ButtonRow>
       <CenterContainer>{_renderGroups()}</CenterContainer>
     </GroupListContainer>
