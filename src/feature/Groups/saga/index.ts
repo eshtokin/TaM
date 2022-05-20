@@ -16,7 +16,12 @@ import {
 import { call, put, select, takeLatest } from 'redux-saga/effects'
 import { CreateGroupPayload, DeleteGroupPayload, Group } from '../types'
 import { Tab } from 'src/core/types'
-import { getTabsFromCurrentWindow, openTab } from 'src/chrome/tabs'
+import {
+  closeTab,
+  getTabsFromCurrentWindow,
+  openTab,
+  getCurrentTab,
+} from 'src/chrome/tabs'
 
 function* createGroupSaga(
   action: PayloadAction<CreateGroupPayload>,
@@ -92,6 +97,10 @@ function* openGroupSagas(action: PayloadAction<string>): Generator {
     currentGroup.tabs.forEach((t) => {
       openTab(t)
     })
+
+    const currentTab = yield chrome.tabs.getCurrent()
+
+    yield call(closeTab, (currentTab as Tab).id)
   }
 }
 
