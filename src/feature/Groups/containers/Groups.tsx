@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { useAppSelector } from 'src/store/hooks'
 import {
@@ -19,8 +19,6 @@ const GroupListContainer = () => {
   const groups = useAppSelector((state) => state.group.groups)
   const currentTabs = groups.find((g) => g.active)?.tabs || []
 
-  const [deleteMode, setDeleteMode] = useState(false)
-
   const setActiveGroup = (title: string) =>
     dispatch(setActiveGroupAction({ title }))
 
@@ -29,8 +27,6 @@ const GroupListContainer = () => {
   const addNewGroup = (title: string) => {
     dispatch(createGroupAction({ title }))
   }
-
-  const toggleDeleteMode = () => setDeleteMode(!deleteMode)
 
   useEffect(() => {
     dispatch(loadCurrentTabsAction())
@@ -53,12 +49,10 @@ const GroupListContainer = () => {
       <GroupList
         {...{
           groups,
-          deleteMode,
           setActiveGroup,
           openGroup,
           deleteGroup,
           addNewGroup,
-          toggleDeleteMode,
         }}
       />
       <TabList {...{ tabs: currentTabs, openTab, deleteTab }} />

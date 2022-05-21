@@ -4,28 +4,26 @@ import styles, { ThemeProvider } from 'styled-components'
 import store, { persistor } from 'src/store/store'
 import { colors, theme } from 'src/core/constants'
 import { Groups } from '../groups'
+import { Paper } from '@mui/material'
 
 function App() {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <ThemeProvider theme={theme}>
-          <MainContainer>
+          <Paper
+            sx={{
+              display: 'flex',
+              height: '100vh',
+              width: '100vw',
+              overflow: 'scroll',
+            }}>
             <Groups />
-          </MainContainer>
+          </Paper>
         </ThemeProvider>
       </PersistGate>
     </Provider>
   )
 }
-
-const MainContainer = styles.div`
-  display: flex;
-  height: 100vh;
-  width: 100vw;
-  min-height: 400px;
-  min-width: 400px;
-  background: ${colors.veryDarkBlue};
-`
 
 export default App

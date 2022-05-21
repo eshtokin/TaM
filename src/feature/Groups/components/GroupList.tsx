@@ -1,28 +1,22 @@
 import { FC, useState } from 'react'
-import styled from 'styled-components'
 import GroupListItem from './GroupListItem'
-import { colors } from 'src/core/constants'
-import { Button, Input, Text } from 'src/core/components'
 import { Group } from 'src/feature/groups/types'
+import { Paper, Input, Button } from '@mui/material'
 
 type Props = {
   groups: Group[]
-  deleteMode: boolean
   setActiveGroup: (title: string) => void
   openGroup: (title: string) => void
   deleteGroup: (title: string) => void
   addNewGroup: (title: string) => void
-  toggleDeleteMode: () => void
 }
 
 const GroupList: FC<Props> = ({
   groups,
-  deleteMode,
   setActiveGroup,
   openGroup,
   deleteGroup,
   addNewGroup,
-  toggleDeleteMode,
 }) => {
   const [newGroupName, setNewGroupName] = useState('')
 
@@ -32,7 +26,7 @@ const GroupList: FC<Props> = ({
         {groups.map((group, index) => (
           <GroupListItem
             key={`group-${index}`}
-            {...{ group, openGroup, deleteMode, setActiveGroup, deleteGroup }}
+            {...{ group, openGroup, setActiveGroup, deleteGroup }}
           />
         ))}
       </>
@@ -41,67 +35,42 @@ const GroupList: FC<Props> = ({
 
   const _renderAddRow = () => {
     return (
-      <>
+      <div style={{ display: 'flex' }}>
         <Input
           type={'text'}
           value={newGroupName}
           onChange={(e) => setNewGroupName(e.target.value)}
+          style={{ flex: 1 }}
         />
+        <div style={{ width: '20px' }} />
         <Button
+          variant={'contained'}
+          disabled={0 === newGroupName.length}
           onClick={() => {
             if (!newGroupName.trim().length) return
             addNewGroup(newGroupName)
             setNewGroupName('')
           }}>
-          <Text cantSelect={false}>+</Text>
+          Add
         </Button>
-      </>
+      </div>
     )
   }
 
   return (
-    <GroupListContainer>
-      <ButtonRow>
-        <SideContainer>
-          {groups.length > 0 && (
-            <Button onClick={toggleDeleteMode}>
-              <Text cantSelect={true}>{deleteMode ? 'x' : '-'}</Text>
-            </Button>
-          )}
-        </SideContainer>
-        {_renderAddRow()}
-      </ButtonRow>
-      <CenterContainer>{_renderGroups()}</CenterContainer>
-    </GroupListContainer>
+    <Paper
+      elevation={3}
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        padding: '20px',
+        margin: '20px',
+        width: '20vw',
+      }}>
+      {_renderAddRow()}
+      {_renderGroups()}
+    </Paper>
   )
 }
-
-const GroupListContainer = styled.div`
-  display: flex;
-  align-self: center;
-  flex-direction: column;
-  width: 20vw;
-  height: 95vh;
-  margin: 10px 5px 10px 10px;
-  border-radius: 10px;
-  background-color: ${colors.verySoftBlue};
-`
-
-const SideContainer = styled.div`
-  display: flex;
-  justify-content: center;
-`
-
-const CenterContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-`
-
-const ButtonRow = styled.div`
-  display: flex;
-  height: 6vh;
-  align-items: center;
-  justify-content: space-around;
-`
 
 export default GroupList
