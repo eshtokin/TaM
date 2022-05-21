@@ -18,9 +18,9 @@ import { CreateGroupPayload, DeleteGroupPayload, Group } from '../types'
 import { Tab } from 'src/core/types'
 import {
   closeTab,
+  getCurrentTab,
   getTabsFromCurrentWindow,
   openTab,
-  getCurrentTab,
 } from 'src/chrome/tabs'
 
 function* createGroupSaga(
@@ -44,6 +44,10 @@ function* createGroupSaga(
 
   yield put(addGroupAction(newGroup))
   yield put(addCurrentTabsToGroupAction(newGroup.title))
+  const currentTabs = yield call(getTabsFromCurrentWindow)
+  ;(currentTabs as Tab[]).forEach((t) => {
+    !t.active && closeTab(t.id)
+  })
 }
 
 function* deleteGroupSaga(
@@ -62,9 +66,12 @@ function* addCurrentTabsToGroupSaga(action: PayloadAction<string>): Generator {
   if (!group) return
 
   const currentTabs = yield call(getTabsFromCurrentWindow)
+  const currentTab = yield call(getCurrentTab)
 
   const duplicatedGroup = { ...(group as Group) }
-  duplicatedGroup.tabs = [...(currentTabs as Tab[])]
+  duplicatedGroup.tabs = (currentTabs as Tab[]).filter(
+    (t) => t.id !== (currentTab as Tab).id,
+  )
 
   yield put(updateGroupAction(duplicatedGroup))
 }

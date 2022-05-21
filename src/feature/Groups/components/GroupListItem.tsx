@@ -1,5 +1,6 @@
 import { Group } from 'src/feature/groups/types'
-import { Button, ButtonGroup, Paper } from '@mui/material'
+import { Button, ButtonGroup, Paper, colors } from '@mui/material'
+import { OpenInBrowser, Delete } from '@mui/icons-material'
 
 type Props = {
   group: Group
@@ -20,13 +21,19 @@ export default function GroupListItem({
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-evenly',
         padding: '10px',
         margin: '10px 0',
+        ...(group.active && { backgroundColor: colors.blue[50] }),
+        '&:hover': {
+          cursor: 'pointer',
+          backgroundColor: colors.blue[50],
+        },
       }}
       onClick={() => setActiveGroup(group.title)}>
       <span
         style={{
+          display: 'flex',
+          flex: 1,
           fontSize: '20px',
           padding: '5px 0 0 0 ',
           margin: '0 10px 0 0',
@@ -35,8 +42,16 @@ export default function GroupListItem({
         {group.title}
       </span>
       <ButtonGroup>
-        <Button onClick={() => openGroup(group.title)}>open</Button>
-        <Button onClick={() => deleteGroup(group.title)}>delete</Button>
+        <Button
+          onClick={() => openGroup(group.title)}
+          sx={{ '&:hover': { backgroundColor: colors.green[300] } }}>
+          <OpenInBrowser />
+        </Button>
+        <Button
+          onClick={() => deleteGroup(group.title)}
+          sx={{ '&:hover': { backgroundColor: colors.amber[400] } }}>
+          <Delete />
+        </Button>
       </ButtonGroup>
     </Paper>
   )

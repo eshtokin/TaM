@@ -1,8 +1,8 @@
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
-import styles, { ThemeProvider } from 'styled-components'
+import { ThemeProvider } from 'styled-components'
 import store, { persistor } from 'src/store/store'
-import { colors, theme } from 'src/core/constants'
+import { theme } from 'src/core/constants'
 import { Groups } from '../groups'
 import { Paper } from '@mui/material'
 

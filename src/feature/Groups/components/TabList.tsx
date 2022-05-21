@@ -1,7 +1,6 @@
-import { Box } from '@mui/material'
-import { colors } from 'src/core/constants'
 import { Tab } from 'src/core/types'
 import TabListItem from './TabListItem'
+import { Paper } from '@mui/material'
 
 type Props = {
   tabs: Tab[]
@@ -10,19 +9,17 @@ type Props = {
 }
 const TabList: React.FC<Props> = ({ tabs, openTab, deleteTab }) => {
   return (
-    <Box
+    <Paper
+      elevation={3}
       sx={{
-        height: '95vh',
-        margin: '10px',
-        overflow: 'scroll',
         alignSelf: 'center',
-        background: colors.verySoftBlue,
-        borderRadius: '10px',
+        height: '96vh',
+        overflow: 'scroll',
       }}>
       {tabs.map((tab) => (
         <TabListItem {...{ tab, openTab, deleteTab }} />
       ))}
-    </Box>
+    </Paper>
   )
 }
 

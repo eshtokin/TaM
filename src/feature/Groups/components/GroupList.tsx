@@ -2,6 +2,7 @@ import { FC, useState } from 'react'
 import GroupListItem from './GroupListItem'
 import { Group } from 'src/feature/groups/types'
 import { Paper, Input, Button } from '@mui/material'
+import { Add } from '@mui/icons-material'
 
 type Props = {
   groups: Group[]
@@ -51,7 +52,7 @@ const GroupList: FC<Props> = ({
             addNewGroup(newGroupName)
             setNewGroupName('')
           }}>
-          Add
+          <Add />
         </Button>
       </div>
     )
