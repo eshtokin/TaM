@@ -1,6 +1,7 @@
 import {
   addCurrentTabsToGroupAction,
   deleteTabAction,
+  moveTabToAnotherGroupAction,
   openGroupAction,
   openTabAction,
   updateGroupAction,
@@ -14,7 +15,12 @@ import {
   removeGroupAction,
 } from '../actions'
 import { call, put, select, takeLatest } from 'redux-saga/effects'
-import { CreateGroupPayload, DeleteGroupPayload, Group } from '../types'
+import {
+  CreateGroupPayload,
+  DeleteGroupPayload,
+  Group,
+  MoveTabToAnotherGroupPayload,
+} from '../types'
 import { Tab } from 'src/core/types'
 import {
   closeTab,
@@ -111,6 +117,32 @@ function* openGroupSagas(action: PayloadAction<string>): Generator {
   }
 }
 
+function* moveTabToAnotherGroupSaga(
+  action: PayloadAction<MoveTabToAnotherGroupPayload>,
+): Generator {
+  //TODO: add loader
+  const { tab, chosenGroup } = action.payload
+
+  const groups = yield select((state) => (state as RootState).group.groups)
+  const groupState = [...(groups as Group[])]
+
+  // update current tab
+  const currentGroup = groupState.find((g) => g.active)
+  if (!currentGroup) return
+  const updatedCurrentGroup: Group = {
+    ...currentGroup,
+    tabs: currentGroup.tabs.filter((t) => t.url !== tab.url),
+  }
+  yield put(updateGroupAction(updatedCurrentGroup))
+
+  // update chosen tab
+  const updateChosenGroup = {
+    ...chosenGroup,
+    tabs: chosenGroup.tabs.concat([tab]),
+  }
+  yield put(updateGroupAction(updateChosenGroup))
+}
+
 function* groupSaga(): Generator {
   yield takeLatest(createGroupAction, createGroupSaga)
   yield takeLatest(deleteGroupAction, deleteGroupSaga)
@@ -118,6 +150,7 @@ function* groupSaga(): Generator {
   yield takeLatest(openTabAction, openTabSaga)
   yield takeLatest(deleteTabAction, deleteTabSaga)
   yield takeLatest(openGroupAction, openGroupSagas)
+  yield takeLatest(moveTabToAnotherGroupAction, moveTabToAnotherGroupSaga)
 }
 
 export default groupSaga

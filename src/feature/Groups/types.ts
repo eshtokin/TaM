@@ -26,3 +26,8 @@ export type RemoveGroupPayload = {
 export type SetActiveGroupPayload = {
   title: string
 }
+
+export type MoveTabToAnotherGroupPayload = {
+  tab: Tab
+  chosenGroup: Group
+}

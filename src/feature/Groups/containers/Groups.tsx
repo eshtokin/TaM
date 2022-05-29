@@ -9,10 +9,12 @@ import {
   openTabAction,
   deleteTabAction,
   openGroupAction,
+  moveTabToAnotherGroupAction,
 } from 'src/feature/groups/actions'
 import GroupList from '../components/GroupList'
 import TabList from '../components/TabList'
 import { Tab } from 'src/core/types'
+import { Group } from '../types'
 
 const GroupListContainer = () => {
   const dispatch = useDispatch()
@@ -40,6 +42,10 @@ const GroupListContainer = () => {
     dispatch(deleteTabAction(tab))
   }
 
+  const moveTab = (tab: Tab, chosenGroup: Group) => {
+    dispatch(moveTabToAnotherGroupAction({ tab, chosenGroup }))
+  }
+
   const openGroup = (title: string) => {
     dispatch(openGroupAction(title))
   }
@@ -55,7 +61,9 @@ const GroupListContainer = () => {
           addNewGroup,
         }}
       />
-      <TabList {...{ tabs: currentTabs, openTab, deleteTab }} />
+      <TabList
+        {...{ tabs: currentTabs, openTab, deleteTab, moveTab, groups }}
+      />
     </>
   )
 }

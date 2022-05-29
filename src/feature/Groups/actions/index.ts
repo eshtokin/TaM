@@ -4,6 +4,7 @@ import {
   DeleteGroupPayload,
   RemoveGroupPayload,
   SetActiveGroupPayload,
+  MoveTabToAnotherGroupPayload,
 } from '../types'
 import { createAction } from '@reduxjs/toolkit'
 import { Tab } from 'src/core/types'
@@ -37,3 +38,6 @@ export const addCurrentTabsToGroupAction = createAction<string>(
 export const openTabAction = createAction<Tab>('OPEN_TAB')
 
 export const deleteTabAction = createAction<Tab>('DELETE_TAB')
+
+export const moveTabToAnotherGroupAction =
+  createAction<MoveTabToAnotherGroupPayload>('MOVE_TAB_TO_ANOTHER_GROUP')

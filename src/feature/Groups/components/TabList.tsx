@@ -1,13 +1,22 @@
 import { Tab } from 'src/core/types'
 import TabListItem from './TabListItem'
 import { Paper } from '@mui/material'
+import { Group } from '../types'
 
 type Props = {
   tabs: Tab[]
   openTab: (tab: Tab) => void
   deleteTab: (tab: Tab) => void
+  moveTab: (tab: Tab, chosenGroup: Group) => void
+  groups: Group[]
 }
-const TabList: React.FC<Props> = ({ tabs, openTab, deleteTab }) => {
+const TabList: React.FC<Props> = ({
+  tabs,
+  openTab,
+  deleteTab,
+  moveTab,
+  groups,
+}) => {
   return (
     <Paper
       elevation={3}
@@ -16,9 +25,9 @@ const TabList: React.FC<Props> = ({ tabs, openTab, deleteTab }) => {
         height: '96vh',
         overflow: 'scroll',
       }}>
-      {tabs.map((tab) => (
-        <TabListItem {...{ tab, openTab, deleteTab }} />
-      ))}
+      {tabs.map((tab) => {
+        return <TabListItem {...{ tab, openTab, deleteTab, moveTab, groups }} />
+      })}
     </Paper>
   )
 }
