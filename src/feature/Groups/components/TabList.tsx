@@ -24,9 +24,15 @@ const TabList: React.FC<Props> = ({
         alignSelf: 'center',
         height: '96vh',
         overflow: 'scroll',
-      }}>
+      }}
+    >
       {tabs.map((tab) => {
-        return <TabListItem {...{ tab, openTab, deleteTab, moveTab, groups }} />
+        return (
+          <TabListItem
+            key={`tabListItme-${tab.id}`}
+            {...{ tab, openTab, deleteTab, moveTab, groups }}
+          />
+        )
       })}
     </Paper>
   )

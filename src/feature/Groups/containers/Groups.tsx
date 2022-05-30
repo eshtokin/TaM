@@ -15,11 +15,13 @@ import GroupList from '../components/GroupList'
 import TabList from '../components/TabList'
 import { Tab } from 'src/core/types'
 import { Group } from '../types'
+import { MOCK_TABS } from '../constants/mockTabs'
 
 const GroupListContainer = () => {
   const dispatch = useDispatch()
   const groups = useAppSelector((state) => state.group.groups)
-  const currentTabs = groups.find((g) => g.active)?.tabs || []
+  // const currentTabs = groups.find((g) => g.active)?.tabs || []
+  const currentTabs = MOCK_TABS
 
   const setActiveGroup = (title: string) =>
     dispatch(setActiveGroupAction({ title }))

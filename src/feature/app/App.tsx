@@ -5,6 +5,7 @@ import store, { persistor } from 'src/store/store'
 import { theme } from 'src/core/constants'
 import { Groups } from '../groups'
 import { Paper } from '@mui/material'
+import { Favourites } from '../favourites'
 
 function App() {
   return (
@@ -16,9 +17,11 @@ function App() {
               display: 'flex',
               height: '100vh',
               width: '100vw',
-              overflow: 'scroll',
-            }}>
+              overflow: 'hidden',
+            }}
+          >
             <Groups />
+            <Favourites />
           </Paper>
         </ThemeProvider>
       </PersistGate>
