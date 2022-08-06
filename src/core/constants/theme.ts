@@ -1,7 +1,7 @@
-const light =  {
-    background: 'white',
-    borderColor: 'black',
-  }
+const light = {
+  background: 'white',
+  borderColor: 'black',
+}
 
 const dark = {}
 

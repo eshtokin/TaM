@@ -24,8 +24,7 @@ const TabList: React.FC<Props> = ({
         alignSelf: 'center',
         height: '96vh',
         overflow: 'auto',
-      }}
-    >
+      }}>
       {tabs.map((tab) => {
         return (
           <TabListItem

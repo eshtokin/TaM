@@ -21,8 +21,7 @@ const FavouriteListItem: React.FC<Props> = ({ tab }) => {
         '&:hover': {
           cursor: 'pointer',
         },
-      }}
-    >
+      }}>
       <img
         style={{ width: '70px', height: '70px', margin: '10px 0' }}
         src={tab.favIconUrl}

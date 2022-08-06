@@ -1,12 +1,8 @@
-import {
-  updateGroupAction,
-} from './../actions/index'
+import { updateGroupAction } from './../actions/index'
 import { RootState } from '../../../store/store'
 import { PayloadAction } from '@reduxjs/toolkit'
 import { put, select } from 'redux-saga/effects'
-import {
-  Group,
-} from '../types'
+import { Group } from '../types'
 import { Tab } from 'src/core/types'
 
 export default function* deleteTabSaga(action: PayloadAction<Tab>): Generator {

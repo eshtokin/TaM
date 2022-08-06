@@ -19,9 +19,7 @@ const FavouriteList: React.FC<Props> = ({
         <FavouriteListItem tab={t} key={`favouriteTab-${t.id}`} />
       ))}
       {tabs.length < 12 && (
-        <AddBox
-          sx={{ width: '140px', height: '100px', margin: '12px 20px' }}
-        />
+        <AddBox sx={{ width: '140px', height: '100px', margin: '12px 20px' }} />
       )}
     </>
   )

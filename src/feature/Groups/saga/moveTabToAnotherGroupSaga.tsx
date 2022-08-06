@@ -1,13 +1,8 @@
-import {
-  updateGroupAction,
-} from './../actions/index'
+import { updateGroupAction } from './../actions/index'
 import { RootState } from '../../../store/store'
 import { PayloadAction } from '@reduxjs/toolkit'
 import { put, select } from 'redux-saga/effects'
-import {
-  Group,
-  MoveTabToAnotherGroupPayload,
-} from '../types'
+import { Group, MoveTabToAnotherGroupPayload } from '../types'
 
 export default function* moveTabToAnotherGroupSaga(
   action: PayloadAction<MoveTabToAnotherGroupPayload>,

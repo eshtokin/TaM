@@ -9,11 +9,7 @@ import {
   TextField,
 } from '@mui/material'
 import { Tab } from 'src/core/types'
-import {
-  Delete,
-  OpenInBrowser,
-  MoveUp,
-} from '@mui/icons-material'
+import { Delete, OpenInBrowser, MoveUp } from '@mui/icons-material'
 import { useState } from 'react'
 import { Group } from '../types'
 

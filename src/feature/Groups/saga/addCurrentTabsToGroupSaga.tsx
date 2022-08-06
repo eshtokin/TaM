@@ -6,7 +6,9 @@ import { Group } from '../types'
 import { Tab } from 'src/core/types'
 import { getCurrentTab, getTabsFromCurrentWindow } from 'src/chrome/tabs'
 
-export default function* addCurrentTabsToGroupSaga(action: PayloadAction<string>): Generator {
+export default function* addCurrentTabsToGroupSaga(
+  action: PayloadAction<string>,
+): Generator {
   const groupTitle = action.payload
   const group = yield select((state) =>
     (state as RootState).group.groups.find((g) => g.title === groupTitle),
