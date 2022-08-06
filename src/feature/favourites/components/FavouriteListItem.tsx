@@ -9,6 +9,8 @@ const FavouriteListItem: React.FC<Props> = ({ tab }) => {
   return (
     <Box
       sx={{
+        borderWidth: '2px',
+        borderColor: 'red',
         width: '180px',
         height: '100px',
         margin: '20px 20px',

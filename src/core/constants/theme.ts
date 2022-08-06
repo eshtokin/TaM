@@ -1,14 +1,13 @@
-import { DefaultTheme } from 'styled-components'
-const theme: DefaultTheme = {
-  colors: {
-    verySoftBlue: '#8ECAE6',
-    strongCyan: '#219EBC',
-    veryDarkBlue: '#023047',
-    vividOrange: '#FFB703',
-    pureOrange: '#FB8500',
-    white: '#ffffff',
-    black: '#000000',
-  },
+const light =  {
+    background: 'white',
+    borderColor: 'black',
+  }
+
+const dark = {}
+
+export function useAppTheme(mode: 'dark' | 'light') {
+  const currentColors = mode === 'light' ? light : dark
+  return currentColors
 }
 
-export default theme
+export default useAppTheme

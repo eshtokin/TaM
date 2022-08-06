@@ -20,7 +20,7 @@ const FavouriteList: React.FC<Props> = ({
       ))}
       {tabs.length < 12 && (
         <AddBox
-          sx={{ width: '140px', height: '100px', margin: '0 20px 25px' }}
+          sx={{ width: '140px', height: '100px', margin: '12px 20px' }}
         />
       )}
     </>

@@ -14,11 +14,12 @@ const FavouritesContainer: React.FC = () => {
       sx={{
         display: 'flex',
         flexWrap: 'wrap',
-        alignSelf: 'flex-end',
-        alignItems: 'flex-end',
+        alignSelf: 'flex-start',
         width: '42vw',
         maxWidth: '42vw',
-        margin: '1vh 20px',
+        margin: '2vh 20px',
+        background: theme.,
+        borderRadius: '10px',
       }}
     >
       <FavouriteList

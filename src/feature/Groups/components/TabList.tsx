@@ -23,7 +23,7 @@ const TabList: React.FC<Props> = ({
       sx={{
         alignSelf: 'center',
         height: '96vh',
-        overflow: 'scroll',
+        overflow: 'auto',
       }}
     >
       {tabs.map((tab) => {
